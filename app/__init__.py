@@ -8,7 +8,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    # array of dictionaries 
     work_history = [
         {
             "company": "Build Carolina Academy",
@@ -45,4 +44,6 @@ def index():
             ],
         },
     ]
-    return render_template("index.html", work_history=work_history, title="Alana", url=os.getenv("URL"))
+    return render_template(
+        "index.html", work_history=work_history, title="Alana", url=os.getenv("URL")
+    )
