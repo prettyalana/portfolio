@@ -1,0 +1,143 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [129.075236, 35.179953] },
+      "properties": {
+        "name": "Busan",
+        "name_preferred": "Busan",
+        "mapbox_id": "dXJuOm1ieHBsYzpKSHc",
+        "feature_type": "place",
+        "full_address": "Busan, South Korea"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [126.978291, 37.566679] },
+      "properties": {
+        "name": "Seoul",
+        "full_address": "Seoul, South Korea"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-0.127647, 51.5073] },
+      "properties": {
+        "name": "London",
+        "full_address": "London, United Kingdom"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-110.80627, 44.548992] },
+      "properties": {
+        "name": "Yellowstone National Park",
+        "full_address": "Yellowstone National Park, Wyoming, USA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-69.975641, 12.515629] },
+      "properties": {
+        "name": "Aruba",
+        "name_preferred": "Aruba",
+        "mapbox_id": "dXJuOm1ieHBsYzpJZzg",
+        "feature_type": "region",
+        "full_address": "Aruba"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [116.391276, 39.906217] },
+      "properties": {
+        "name": "Beijing",
+        "name_preferred": "Beijing",
+        "mapbox_id": "dXJuOm1ieHBsYzpCRVF4",
+        "feature_type": "place",
+        "full_address": "Beijing, China"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-79.063446, 43.10664] },
+      "properties": {
+        "name": "Niagara Falls",
+        "name_preferred": "Niagara Falls",
+        "mapbox_id": "dXJuOm1ieHBsYzpBeVVvSnc",
+        "feature_type": "place",
+        "full_address": "Niagara Falls, Ontario, Canada"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-115.14062, 36.169213] },
+      "properties": {
+        "name": "Las Vegas",
+        "name_preferred": "Las Vegas",
+        "mapbox_id": "dXJuOm1ieHBsYzpDc2hvN0E",
+        "feature_type": "place",
+        "full_address": "Las Vegas, Nevada, United States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-118.254187, 34.048051] },
+      "properties": {
+        "name": "Los Angeles",
+        "name_preferred": "Los Angeles",
+        "mapbox_id": "dXJuOm1ieHBsYzpDM2ZvN0E",
+        "feature_type": "place",
+        "full_address": "Los Angeles, California, United States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [129.311914, 35.53917] },
+      "properties": {
+        "name": "Ulsan",
+        "full_address": "Ulsan, South Korea"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [126.851503, 35.159465] },
+      "properties": {
+        "name": "Gwangju",
+        "full_address": "Gwangju, South Korea"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-111.813006, 34.861922] },
+      "properties": {
+        "name": "Sedona",
+        "full_address": "Sedona, Arizona, United States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-155.96395846, 19.56990428] },
+      "properties": {
+        "name": "Kona Coast Resort",
+        "full_address": "78-6842 Ali‘i Dr, Kailua Kona, Hawaii 96740, United States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-156.336, 20.79] },
+      "properties": {
+        "name": "Maui",
+        "full_address": "Maui, Hawaii, United States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-157.861535, 21.308499] },
+      "properties": {
+        "name": "Honolulu",
+        "full_address": "Honolulu, Hawaii, United States"
+      }
+    }
+  ]
+}
