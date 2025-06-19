@@ -6,9 +6,6 @@
       "geometry": { "type": "Point", "coordinates": [129.075236, 35.179953] },
       "properties": {
         "name": "Busan",
-        "name_preferred": "Busan",
-        "mapbox_id": "dXJuOm1ieHBsYzpKSHc",
-        "feature_type": "place",
         "full_address": "Busan, South Korea"
       }
     },
@@ -41,9 +38,6 @@
       "geometry": { "type": "Point", "coordinates": [-69.975641, 12.515629] },
       "properties": {
         "name": "Aruba",
-        "name_preferred": "Aruba",
-        "mapbox_id": "dXJuOm1ieHBsYzpJZzg",
-        "feature_type": "region",
         "full_address": "Aruba"
       }
     },
@@ -52,9 +46,6 @@
       "geometry": { "type": "Point", "coordinates": [116.391276, 39.906217] },
       "properties": {
         "name": "Beijing",
-        "name_preferred": "Beijing",
-        "mapbox_id": "dXJuOm1ieHBsYzpCRVF4",
-        "feature_type": "place",
         "full_address": "Beijing, China"
       }
     },
@@ -63,9 +54,6 @@
       "geometry": { "type": "Point", "coordinates": [-79.063446, 43.10664] },
       "properties": {
         "name": "Niagara Falls",
-        "name_preferred": "Niagara Falls",
-        "mapbox_id": "dXJuOm1ieHBsYzpBeVVvSnc",
-        "feature_type": "place",
         "full_address": "Niagara Falls, Ontario, Canada"
       }
     },
@@ -74,9 +62,6 @@
       "geometry": { "type": "Point", "coordinates": [-115.14062, 36.169213] },
       "properties": {
         "name": "Las Vegas",
-        "name_preferred": "Las Vegas",
-        "mapbox_id": "dXJuOm1ieHBsYzpDc2hvN0E",
-        "feature_type": "place",
         "full_address": "Las Vegas, Nevada, United States"
       }
     },
@@ -85,9 +70,6 @@
       "geometry": { "type": "Point", "coordinates": [-118.254187, 34.048051] },
       "properties": {
         "name": "Los Angeles",
-        "name_preferred": "Los Angeles",
-        "mapbox_id": "dXJuOm1ieHBsYzpDM2ZvN0E",
-        "feature_type": "place",
         "full_address": "Los Angeles, California, United States"
       }
     },
@@ -137,6 +119,78 @@
       "properties": {
         "name": "Honolulu",
         "full_address": "Honolulu, Hawaii, United States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-112.142028, 36.054098] },
+      "properties": {
+        "name": "Grand Canyon",
+        "full_address": "Grand Canyon, Arizona, United States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-122.330286, 47.603243] },
+      "properties": {
+        "name": "Seattle",
+        "full_address": "Seattle, Washington, United States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-122.419359, 37.779238] },
+      "properties": {
+        "name": "San Francisco",
+        "full_address": "San Francisco, California, United States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-73.95709, 40.789352] },
+      "properties": {
+        "name": "Manhattan",
+        "full_address": "Manhattan, New York, United States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-73.94701, 40.810925] },
+      "properties": {
+        "name": "Harlem",
+        "full_address": "Harlem, New York, United States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-80.1919, 25.773357] },
+      "properties": {
+        "name": "Miami",
+        "full_address": "Miami, Florida, United States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-81.379039, 28.54211] },
+      "properties": {
+        "name": "Orlando",
+        "full_address": "Orlando, Florida, United States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-134.408259, 58.300351] },
+      "properties": {
+        "name": "Juneau",
+        "full_address": "Juneau, Alaska, United States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-77.39811, 25.032412] },
+      "properties": {
+        "name": "Nassau",
+        "full_address": "Nassau, New Providence, Bahamas"
       }
     }
   ]
