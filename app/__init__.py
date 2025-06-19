@@ -44,6 +44,28 @@ def index():
             ],
         },
     ]
+    hobbies = [
+        {
+            "image": "https://images.pexels.com/photos/4792079/pexels-photo-4792079.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+            "card_text": "Crocheting"
+        },
+        {
+            "image": "https://images.unsplash.com/photo-1562232573-0305012a8818?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "card_text": "Reading"
+        },
+        {
+            "image": "https://images.pexels.com/photos/5187650/pexels-photo-5187650.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+            "card_text": "Shopping"
+        },
+        {
+            "image": "http://127.0.0.1:5000/static/img/batu-gezer-1HcNgs3RrKE-unsplash-200x200.jpg",
+            "card_text": "Gaming"
+        },
+        {
+            "image": "https://images.unsplash.com/photo-1661894782790-d1143da4f2f5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "card_text": "Traveling and Foreign Languages"
+        }
+    ]
     return render_template(
-        "index.html", work_history=work_history, title="Alana", url=os.getenv("URL")
+        "index.html", work_history=work_history, hobbies=hobbies, title="Alana", url=os.getenv("URL")
     )

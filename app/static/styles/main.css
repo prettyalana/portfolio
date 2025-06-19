@@ -160,6 +160,11 @@ body {
   transform: scale(0.85);
 }
 
+.card:hover {
+    background: pink;
+    border-radius: 20px;
+}
+
 @media (max-width: 600px) {
   .hobby-cards {
     display: flex;
