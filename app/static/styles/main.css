@@ -96,6 +96,15 @@ body {
     font-weight: 700;
 }
 
-.about-me {
-    text-align: center;
+.section-header-wrapper {
+  text-align: center;
+}
+
+.work-history {
+  list-style: none;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
