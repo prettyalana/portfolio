@@ -47,15 +47,7 @@
         <h3>Previous Work Experience</h3>
       </div>
       <div class="work-history">
-        {% for job in work_history %}
-        <h4>{{job.company}}</h4>
-        <em>{{job.role_and_dates}}</em>
-        <ul>
-          {% for function in job.job_functions %}
-          <li>{{function}}</li>
-          {% endfor %}
-        </ul>
-        {% endfor %}
+        {% include "work-history.html" %}
       </div>
     </div>
   </section>
