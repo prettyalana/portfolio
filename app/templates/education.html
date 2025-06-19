@@ -1,0 +1,11 @@
+{% for schools in education %}
+<h4>{{schools.name_and_location}}</h4>
+{% if schools.additional_information %}
+{% for info in schools.additional_information %}
+<ul>
+    <li>{{info.degree_or_certificate}}</li>
+    <li>{{info.course_work}}</li>
+</ul>
+{% endfor %}
+{% endif %}
+{% endfor %}
