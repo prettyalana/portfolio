@@ -5,9 +5,16 @@ from dotenv import load_dotenv
 load_dotenv()
 app = Flask(__name__)
 
-
 @app.route("/")
 def index():
+    pages = [
+    {"name": "Home", "url": "/"},
+    {"name": "About", "url": "/about"},
+    {"name": "Experience", "url": "/experience"},
+    {"name": "Hobbies", "url": "/hobbies"},
+    {"name": "Education", "url": "/education"},
+    {"name": "Map", "url": "/map"},
+]
     work_history = [
         {
             "company": "Build Carolina Academy",
@@ -45,5 +52,5 @@ def index():
         },
     ]
     return render_template(
-        "index.html", work_history=work_history, title="Alana", url=os.getenv("URL")
+        "index.html", work_history=work_history, title="Alana", url=os.getenv("URL"), pages=pages
     )

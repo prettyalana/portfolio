@@ -108,3 +108,9 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.menu-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
