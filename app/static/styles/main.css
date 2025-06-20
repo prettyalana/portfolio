@@ -100,7 +100,7 @@ body {
   text-align: center;
 }
 
-.work-history {
+.work-history, .education-information {
   list-style: none;
   padding: 16px;
   display: flex;
