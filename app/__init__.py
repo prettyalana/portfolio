@@ -9,6 +9,14 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     mapbox_api_key = os.getenv("MAPBOX_API_KEY")
+    pages = [
+        {"name": "Home", "url": "/"},
+        {"name": "About", "url": "/about"},
+        {"name": "Experience", "url": "/experience"},
+        {"name": "Hobbies", "url": "/hobbies"},
+        {"name": "Education", "url": "/education"},
+        {"name": "Map", "url": "/map"},
+    ]
     work_history = [
         {
             "company": "Build Carolina Academy",
