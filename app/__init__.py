@@ -9,11 +9,11 @@ app = Flask(__name__)
 def index():
     pages = [
     {"name": "Home", "url": "/"},
-    {"name": "About", "url": "/about"},
-    {"name": "Experience", "url": "/experience"},
+    {"name": "About", "url": "/#about-me"},
+    {"name": "Experience", "url": "/#work-experience"},
     {"name": "Hobbies", "url": "/hobbies"},
-    {"name": "Education", "url": "/education"},
-    {"name": "Map", "url": "/map"},
+    {"name": "Education", "url": "/#education"},
+    {"name": "Map", "url": "/#map"},
 ]
     work_history = [
         {
