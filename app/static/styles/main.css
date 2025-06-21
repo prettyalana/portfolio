@@ -182,8 +182,8 @@ a {
 }
 
 .card:hover {
-    background: pink;
-    border-radius: 20px;
+  background: pink;
+  border-radius: 20px;
 }
 
 @media (max-width: 600px) {
@@ -200,9 +200,9 @@ a {
 }
 
 .menu-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
 }
 
 .about-me-content,
@@ -211,4 +211,22 @@ a {
   font-size: large;
   line-height: 2;
   margin-bottom: 50px;
+}
+
+#up {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 100;
+  border: 1px solid rgb(238, 188, 76);
+  background: white;
+  padding: 16px 18px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+#up:hover {
+  background-color: #1c539f;
+  box-shadow: 0 0 10px 5px white;
+  color: rgb(238, 188, 76);
 }
