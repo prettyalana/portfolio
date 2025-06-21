@@ -103,6 +103,10 @@ body {
   font-weight: 700;
 }
 
+.section-header-wrapper {
+  text-align: center;
+}
+
 #about-me {
     display: flex;
     flex-direction: column;
@@ -113,10 +117,6 @@ body {
 .about-me-content {
   margin-top: 20px;
   font-size: large;
-}
-
-.section-header-wrapper {
-  text-align: center;
 }
 
 .work-history {
