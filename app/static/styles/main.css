@@ -96,7 +96,7 @@ body {
     font-weight: 700;
 }
 
-.about-me {
+#about-me {
     display: flex;
     flex-direction: column;
     justify-content: center;
