@@ -96,6 +96,10 @@ body {
     font-weight: 700;
 }
 
+.section-header-wrapper {
+  text-align: center;
+}
+
 #about-me {
     display: flex;
     flex-direction: column;
@@ -108,10 +112,6 @@ body {
     font-size: large;
 }
 
-.section-header-wrapper {
-  text-align: center;
-}
-
 .work-history {
   list-style: none;
   padding: 16px;
@@ -119,6 +119,12 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.fun-facts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .about-me-content, .work-history {
