@@ -44,6 +44,13 @@ def index():
             ],
         },
     ]
+    return render_template(
+        "index.html", work_history=work_history, title="Alana", url=os.getenv("URL")
+    )
+
+
+@app.route('/hobbies')
+def hobbies():
     hobbies = [
         {
             "image": "https://images.pexels.com/photos/4792079/pexels-photo-4792079.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
@@ -67,5 +74,5 @@ def index():
         }
     ]
     return render_template(
-        "index.html", work_history=work_history, hobbies=hobbies, title="Alana", url=os.getenv("URL")
+        "hobbies.html", hobbies=hobbies, title="Alana", url=os.getenv("URL")
     )
