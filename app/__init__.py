@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 load_dotenv()
 app = Flask(__name__)
 
-
 @app.route("/")
 def index():
     work_history = [
@@ -44,6 +43,24 @@ def index():
             ],
         },
     ]
+    education = [
+        {
+            "name_and_location": "Illinois Institute of Technology Stuart School of Business, Chicago, IL"
+        },
+        {
+            "name_and_location": "University of Illinois - Discovery Partners Institute Tech Apprenticeship, Chicago, IL",
+            "additional_information": [
+                {
+                    "degree_or_certificate": "Certificate of Completion Software Development",
+                    "course_work": "Relevant coursework: Software Engineering",
+                }
+            ]
+        },
+    ]
     return render_template(
-        "index.html", work_history=work_history, title="Alana", url=os.getenv("URL")
+        "index.html",
+        work_history=work_history,
+        education=education,
+        title="Alana",
+        url=os.getenv("URL"),
     )
