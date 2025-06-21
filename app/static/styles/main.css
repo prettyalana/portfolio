@@ -142,13 +142,6 @@ a {
   text-decoration: none;
 }
 
-.about-me-content,
-.work-history {
-  font-size: large;
-  line-height: 2;
-  margin-bottom: 50px;
-}
-
 .hobby-cards {
   display: flex;
   justify-content: center;
@@ -212,3 +205,10 @@ a {
     padding: 1rem;
 }
 
+.about-me-content,
+.work-history,
+.education-information {
+  font-size: large;
+  line-height: 2;
+  margin-bottom: 50px;
+}
