@@ -110,6 +110,10 @@ body {
 .about-me-content {
     margin-top: 20px;
     font-size: large;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .work-history {
@@ -119,12 +123,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.fun-facts {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .about-me-content, .work-history {
