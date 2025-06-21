@@ -5,10 +5,11 @@ from dotenv import load_dotenv
 load_dotenv()
 app = Flask(__name__)
 
+mapbox_api_key = os.getenv("MAPBOX_API_KEY")
+url=os.getenv("URL")
 
 @app.route("/")
 def index():
-    mapbox_api_key = os.getenv("MAPBOX_API_KEY")
     pages = [
     {"name": "Home", "url": "/"},
     {"name": "About", "url": "/#about-me"},
@@ -98,7 +99,7 @@ def index():
         education=education,
         hobbies=hobbies,
         title="Alana",
-        url=os.getenv("URL"),
+        url=url,
         mapbox_api_key=mapbox_api_key,
         pages=pages
     )
@@ -133,5 +134,5 @@ def hobbies():
         "hobbies.html",
         hobbies=hobbies_list,
         title="Alana",
-        url=os.getenv("URL"),
+        url=url
     )
