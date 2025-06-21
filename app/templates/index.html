@@ -16,10 +16,16 @@
 
   <link lang="sass" rel="stylesheet" href="./static/styles/main.css" />
   <link rel="icon" href="./static/img/favicon.ico" type="image/x-icon" />
+  <script src="https://kit.fontawesome.com/ab9c75fe83.js" crossorigin="anonymous"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.js"></script>
   <title>{{ title }}</title>
 </head>
 
 <body>
+  <menu class="menu-container">
+    {% include "menu-bar.html" %}
+  </menu>
   <header class="nav-bar">
     <div class="nav-content">
       <a href="/">
@@ -37,21 +43,166 @@
     <h1>{{ title }}</h1>
   </div>
 
-  <section class="about-me">
+  <section id="about-me">
     <div class="section-header-wrapper">
       <h2>About me</h2>
     </div>
 
-    <div class="work-experience">
-      <div class="section-header-wrapper">
-        <h3>Previous Work Experience</h3>
-      </div>
-      <div class="work-history">
-        {% include "work-history.html" %}
-      </div>
+    <div class="about-me-content">
+      <p>
+        I am a passionate, driven, and resolute Full Stack Software Engineer and ardent learner with an innate passion
+        for
+        continuous learning and innovation. My journey into programming began at an early age through an enrichment
+        program at Northwestern University, where I completed robotics and Scratch I & II courses. That’s when I
+        discovered the immense joy I derive from building and creating.
+      </p>
+
+      <p>I’m enamored by the versatility of technology and the ability to instruct a computer to bring ideas to
+        life
+        through websites, applications, games, and many more limitless opportunities. My love for tech was reignited by
+        my hobby of crocheting.
+        Both
+        crocheting and coding begin with a blank slate and limited resources, demanding critical thinking, imagination,
+        and creativity to produce a tangible result. Crochet patterns are like algorithms, just as programs are
+        implemented algorithms.</p>
+
+      <p>
+        Outside of tech, I enjoy international travel, crocheting, photography, reading, gaming, and I’ve
+        developed basic proficiency in Korean through reading, writing, and speaking. These experiences have shaped my
+        leadership and creative abilities.
+      </p>
+
+      <p>Creation and helping others are the two overarching interests in my life. Learning and working with software
+        are
+        the
+        first steps toward making a meaningful impact on both the tech industry and society. My goal is to positively
+        impact people’s lives through technology and innovation.</p>
+
+      <h3>Fun Facts</h3>
+      <ul class="fun-facts">
+        <li>My favorite color is pink</li>
+        <li>My favorite animals are panda bears</li>
+        <li>I can read and write Korean (Hangul)</li>
+      </ul>
     </div>
   </section>
 
+  <section id="work-experience">
+
+    <div class="section-header-wrapper">
+      <h2>Previous Work Experience</h2>
+    </div>
+    <div class="work-history">
+      {% include "work-history.html" %}
+    </div>
+
+  </section>
+
+  <section id="hobbies">
+    <div class="interests">
+      <a href="{{url_for('hobbies')}}">
+        <h2>Hobbies</h2>
+      </a>
+    </div>
+  </section>
+
+
+  <section id="education">
+    <div class="section-header-wrapper">
+      <h2>Education</h2>
+    </div>
+    <div class="education-information">
+      {% include "education.html" %}
+    </div>
+  </section>
+
+
+  <div id="map"></div>
+  <script>
+    mapboxgl.accessToken = "{{mapbox_api_key}}";
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v9',
+      projection: 'globe', // Display the map as a globe, since satellite-v9 defaults to Mercator
+      zoom: 1,
+      center: [30, 15]
+    });
+
+    map.on('load', () => {
+      map.addSource('places', {
+        type: 'geojson',
+        data: '/static/data/travel_map.geojson'
+      })
+
+      map.addLayer({
+        id: 'places-layer',
+        type: 'circle',
+        source: 'places',
+        paint: {
+          'circle-radius': 6,
+          'circle-color': '#FF5722'
+        }
+      }
+
+      )
+    });
+
+    map.addControl(new mapboxgl.NavigationControl());
+    map.scrollZoom.disable();
+
+    map.on('style.load', () => {
+      map.setFog({}); // Set the default atmosphere style
+    });
+
+    // The following values can be changed to control rotation speed:
+
+    // At low zooms, complete a revolution every two minutes.
+    const secondsPerRevolution = 240;
+    // Above zoom level 5, do not rotate.
+    const maxSpinZoom = 5;
+    // Rotate at intermediate speeds between zoom levels 3 and 5.
+    const slowSpinZoom = 3;
+
+    let userInteracting = false;
+    const spinEnabled = true;
+
+    function spinGlobe() {
+      const zoom = map.getZoom();
+      if (spinEnabled && !userInteracting && zoom < maxSpinZoom) {
+        let distancePerSecond = 360 / secondsPerRevolution;
+        if (zoom > slowSpinZoom) {
+          // Slow spinning at higher zooms
+          const zoomDif =
+            (maxSpinZoom - zoom) / (maxSpinZoom - slowSpinZoom);
+          distancePerSecond *= zoomDif;
+        }
+        const center = map.getCenter();
+        center.lng -= distancePerSecond;
+        // Smoothly animate the map over one second.
+        // When this animation is complete, it calls a 'moveend' event.
+        map.easeTo({ center, duration: 1000, easing: (n) => n });
+      }
+    }
+
+    // Pause spinning on interaction
+    map.on('mousedown', () => {
+      userInteracting = true;
+    });
+    map.on('dragstart', () => {
+      userInteracting = true;
+    });
+
+    // When animation is complete, start spinning if there is no ongoing interaction
+    map.on('moveend', () => {
+      spinGlobe();
+    });
+
+    spinGlobe();
+  </script>
+
+
+
+  <div class="scroll-up-button"><a href="/#top" id="up"><i class="fa-solid fa-chevron-up"></i></a></div>
 </body>
 
 </html>

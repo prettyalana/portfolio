@@ -1,110 +1,233 @@
-p, h1, h2, h3, h4, h5, h6, button {
-    font-family: "Roboto", serif;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font-family: "Roboto", serif;
 }
 
 body {
-    background-color: #f5f5f9;
-    background-size: cover;
-    width: auto; 
-    overflow-x: hidden;
-    font-family: "Roboto", serif;
-    margin: 0px;
+  background-color: #f5f5f9;
+  background-size: cover;
+  width: auto;
+  overflow-x: hidden;
+  font-family: "Roboto", serif;
+  margin: 0px;
 }
 
 .nav-bar {
-    width: 100%;
-    display: inline-block;
-    background-color: #1C539F;
-    font-family: "Roboto", serif;
-    font-weight: 700 !important;
-    padding-top: 10px;
+  width: 100%;
+  display: inline-block;
+  background-color: #1c539f;
+  font-family: "Roboto", serif;
+  font-weight: 700 !important;
+  padding-top: 10px;
 }
 
 .nav-content .logo-touch-target {
-    display: inline-flex;
-    height: 60%;
-    width: 350px;
+  display: inline-flex;
+  height: 60%;
+  width: 350px;
 }
 
 .nav-content .nav-logo {
-    height: 60px;
-    margin: auto;
+  height: 60px;
+  margin: auto;
 }
 
 .nav-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-logo img {
-    width: 200px;
+  width: 200px;
 }
 
 .nav-content nav {
-    display: block;
-    width: 100%;
-    text-align: right;
-    padding-top: 0px;
-    padding-right: 0px;
+  display: block;
+  width: 100%;
+  text-align: right;
+  padding-top: 0px;
+  padding-right: 0px;
 }
 
 .profile {
-    background-color: #1d539f !important;
-    text-align: center;
-    height: 320px;
-    margin-bottom: 50px;
+  background-color: #1d539f !important;
+  text-align: center;
+  height: 320px;
+  margin-bottom: 50px;
 }
 
 .profile h1 {
-        font-size: 50px;
-        font-weight: 700;
-        color: white;
+  font-size: 50px;
+  font-weight: 700;
+  color: white;
 }
 
 .profile img {
-        border-radius: 50%;
-        max-width: 100%;
-        max-height: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;        
-        padding: 20px;
+  border-radius: 50%;
+  max-width: 100%;
+  max-height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  padding: 20px;
 }
 
 .profile .profile-picture {
-    margin-bottom: 30px;
-    height: 200px;
+  margin-bottom: 30px;
+  height: 200px;
 }
 
 .banner {
-    padding: 20px 0px 50px 0px;
-    height: 150px;
-    background-color: #1d539f;
+  padding: 20px 0px 50px 0px;
+  height: 150px;
+  background-color: #1d539f;
 }
 
 .banner .logo {
-    max-width:180px;
-    max-height:60px;
-    width: auto;
-    height: auto;
+  max-width: 180px;
+  max-height: 60px;
+  width: auto;
+  height: auto;
 }
 
 .banner .title {
-    color: white;
-    font-size: 50px;
-    font-weight: 700;
+  color: white;
+  font-size: 50px;
+  font-weight: 700;
 }
 
 .section-header-wrapper {
   text-align: center;
 }
 
-.work-history {
+#about-me {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 40px 50px 40px;
+}
+
+.about-me-content {
+  margin-top: 20px;
+  font-size: large;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.work-history,
+.education-information {
   list-style: none;
   padding: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.interests {
+  margin: 80px 0 80px;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.hobby-cards {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  height: 200px;
+  width: 200px;
+}
+
+.card img {
+  height: 200px;
+  width: 200px;
+  aspect-ratio: 16/9;
+  border-radius: 20px;
+}
+
+.card {
+  width: 100%;
+  height: 250px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.card img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  -webkit-transform: scale(0.85);
+  transform: scale(0.85);
+}
+
+.card:hover {
+  background: pink;
+  border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+  .hobby-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+#map {
+  width: 100%;
+  height: 600px;
+}
+
+.menu-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.about-me-content,
+.work-history,
+.education-information {
+  font-size: large;
+  line-height: 2;
+  margin-bottom: 50px;
+}
+
+#up {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 100;
+  border: 1px solid rgb(238, 188, 76);
+  background: white;
+  padding: 16px 18px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #1c539f;
+}
+
+#up:hover {
+  background-color: #1c539f;
+  box-shadow: 0 0 10px 5px white;
+  color: rgb(238, 188, 76);
 }
