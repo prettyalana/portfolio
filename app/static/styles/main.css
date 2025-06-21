@@ -103,6 +103,18 @@ body {
   font-weight: 700;
 }
 
+.about-me {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 40px 50px 40px;
+}
+
+.about-me-content {
+  margin-top: 20px;
+  font-size: large;
+}
+
 .section-header-wrapper {
   text-align: center;
 }
@@ -122,5 +134,12 @@ body {
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
+}
+
+.about-me-content,
+.work-history {
+  font-size: large;
+  line-height: 2;
+  margin-bottom: 50px;
 }
