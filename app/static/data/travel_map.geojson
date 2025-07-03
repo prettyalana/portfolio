@@ -203,6 +203,17 @@
         "name": "Victoria",
         "full_address": "Victoria, British Columbia, Canada"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.889779, 40.762759]
+      },
+      "properties": {
+        "name": "Salt Lake City",
+        "full_address": "Salt Lake City, Utah, United States"
+      }
     }
   ]
 }
