@@ -99,7 +99,10 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-155.96395846, 19.56990428] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-155.96395846, 19.56990428]
+      },
       "properties": {
         "name": "Kona Coast Resort",
         "full_address": "78-6842 Ali‘i Dr, Kailua Kona, Hawaii 96740, United States"
@@ -191,6 +194,14 @@
       "properties": {
         "name": "Nassau",
         "full_address": "Nassau, New Providence, Bahamas"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-123.3656, 48.4284] },
+      "properties": {
+        "name": "Victoria",
+        "full_address": "Victoria, British Columbia, Canada"
       }
     }
   ]
