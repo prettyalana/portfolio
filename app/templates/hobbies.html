@@ -11,7 +11,11 @@
 <div class="hobby-cards">
     {% for hobby in hobbies %}
     <div class="card">
-        <img src="{{hobby.image}}">
+        {% if 'https' in hobby.image %}
+            <img src="{{hobby.image}}">
+        {% else %}
+            <img src="{{ url_for('static', filename=hobby.image) }}">
+        {% endif %}
         <div class="card-text">
             {{hobby.card_text}}
         </div>

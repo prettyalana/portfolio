@@ -97,7 +97,7 @@ def hobbies():
             "card_text": "Shopping",
         },
         {
-            "image": "http://127.0.0.1:5000/static/img/batu-gezer-1HcNgs3RrKE-unsplash-200x200.jpg",
+            "image": "img/batu-gezer-1HcNgs3RrKE-unsplash-200x200.jpg",
             "card_text": "Gaming",
         },
         {
