@@ -1,4 +1,5 @@
 import os
+import datetime
 from flask import Flask, render_template
 from dotenv import load_dotenv
 from peewee import *
@@ -14,6 +15,19 @@ mydb = MySQLDatabase (os.getenv("MYSQL_DATABASE"),
 )
 
 print(mydb)
+
+class TimeinePost(Model):
+    name = CharField()
+    email = CharField()
+    content = TextField()
+    created_at = DateTimeField(default=datetime.datetime.now)
+    
+    class Meta:
+        database = mydb
+        
+mydb.connect()
+mydb.create_tables([TimeinePost])
+    
 
 mapbox_api_key = os.getenv("MAPBOX_API_KEY")
 url=os.getenv("URL")
