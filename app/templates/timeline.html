@@ -1,0 +1,25 @@
+<form action="{{url_for('post_timeline_post')}}" method="POST">
+
+    <div>
+        <label for="name">Name</label>
+        <input type="text" name="name">
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <input type="text" name="email">
+    </div>
+
+    <div>
+        <label for="content">Content</label>
+        <input type="text" name="content">
+    </div>
+    <button>
+    </button>
+</form>
+
+{% for info in posts %}
+<h4>{{info.name}}</h4>
+<h4>{{info.email}}</h4>
+<h4>{{info.content}}</h4>
+{% endfor %}

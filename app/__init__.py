@@ -1,6 +1,6 @@
 import os
 import datetime
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from dotenv import load_dotenv
 from peewee import *
 from playhouse.shortcuts import model_to_dict
@@ -137,10 +137,6 @@ def hobbies():
         title="Alana",
         url=url
     )
-    
-@app.route('/timeline')
-def timeline():
-    return render_template('timeline.html', title="Timeline")
 
 @app.route('/api/timeline_post', methods=['POST'])
 def post_time_line_post():
@@ -167,3 +163,8 @@ def delete_time_line_post(id):
     return {
         "message": "Timeline post has been successfully deleted"
     }
+    
+@app.route('/timeline', methods=['GET'])
+def timeline():
+    posts = TimelinePost.select().order_by(TimelinePost.created_at.desc())
+    return render_template('timeline.html', title="Timeline", posts=posts)
