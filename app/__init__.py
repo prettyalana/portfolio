@@ -155,3 +155,11 @@ def get_time_line_post():
             for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())
         ]
     }
+    
+@app.route('/api/timeline_post/<int:id>', methods=['DELETE'])
+def delete_time_line_post(id):
+    time_line_post = TimelinePost.get(TimelinePost.id == id)
+    time_line_post.delete_instance()
+    return {
+        "message": "Timeline post has been successfully deleted"
+    }
