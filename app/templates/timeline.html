@@ -1,25 +1,46 @@
-<form action="{{url_for('post_timeline_post')}}" method="POST">
+<head>
+    <link lang="sass" rel="stylesheet" href="/static/styles/timeline.css">
+</head>
 
-    <div>
-        <label for="name">Name</label>
-        <input type="text" name="name">
+<body>
+
+    <h1>Timeline Posts</h1>
+    <div class="form-wrapper">
+        <form action="{{url_for('post_time_line_post')}}" method="POST">
+
+
+            <div>
+                <label for="name">Name</label>
+                <input type="text" name="name" required>
+            </div>
+
+
+
+            <div>
+                <label for="email">Email</label>
+                <input type="text" name="email" required>
+            </div>
+
+
+
+            <div>
+                <label for="content">Content</label>
+                <input type="text" name="content" required>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
     </div>
 
-    <div>
-        <label for="email">Email</label>
-        <input type="text" name="email">
+    <div class="posts-wrapper">
+        {% for info in posts %}
+        <div class="post-card-wrapper">
+            <ul>
+                <li>{{info.name}}</li>
+                <li>{{info.email}}</li>
+                <li>{{info.content}}</li>
+            </ul>
+        </div>
+        {% endfor %}
     </div>
-
-    <div>
-        <label for="content">Content</label>
-        <input type="text" name="content">
-    </div>
-    <button>
-    </button>
-</form>
-
-{% for info in posts %}
-<h4>{{info.name}}</h4>
-<h4>{{info.email}}</h4>
-<h4>{{info.content}}</h4>
-{% endfor %}
+</body>

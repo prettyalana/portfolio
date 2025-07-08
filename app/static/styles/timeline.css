@@ -1,0 +1,21 @@
+h1 {
+    text-align: center;
+}
+
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-card-wrapper {
+    border: .0625rem solid black;
+    font: 900;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+}
+
+ul {
+    list-style-type: none;
+}

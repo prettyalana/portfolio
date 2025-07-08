@@ -1,6 +1,6 @@
 import os
 import datetime
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 from dotenv import load_dotenv
 from peewee import *
 from playhouse.shortcuts import model_to_dict
@@ -8,41 +8,46 @@ from playhouse.shortcuts import model_to_dict
 load_dotenv()
 app = Flask(__name__)
 
-mydb = MySQLDatabase (os.getenv("MYSQL_DATABASE"),
+mydb = MySQLDatabase(
+    os.getenv("MYSQL_DATABASE"),
     user=os.getenv("MYSQL_USER"),
-    password=os.getenv("MYSQL_PASSWORD") ,
-    host=os.getenv("MYSQL_HOST") ,
-    port=3306
+    password=os.getenv("MYSQL_PASSWORD"),
+    host=os.getenv("MYSQL_HOST"),
+    port=3306,
 )
 
 print(mydb)
+
 
 class TimelinePost(Model):
     name = CharField()
     email = CharField()
     content = TextField()
     created_at = DateTimeField(default=datetime.datetime.now)
-    
+
     class Meta:
         database = mydb
-        
+
+
 mydb.connect()
 mydb.create_tables([TimelinePost])
-    
+
 
 mapbox_api_key = os.getenv("MAPBOX_API_KEY")
-url=os.getenv("URL")
+url = os.getenv("URL")
+
 
 @app.route("/")
 def index():
     pages = [
-    {"name": "Home", "url": "/"},
-    {"name": "About", "url": "/#about-me"},
-    {"name": "Experience", "url": "/#work-experience"},
-    {"name": "Hobbies", "url": "/hobbies"},
-    {"name": "Education", "url": "/#education"},
-    {"name": "Map", "url": "/#map"},
-]
+        {"name": "Home", "url": "/"},
+        {"name": "About", "url": "/#about-me"},
+        {"name": "Experience", "url": "/#work-experience"},
+        {"name": "Hobbies", "url": "/hobbies"},
+        {"name": "Education", "url": "/#education"},
+        {"name": "Map", "url": "/#map"},
+        {"name": "Timeline Posts", "url": "/timeline"},
+    ]
     work_history = [
         {
             "company": "Build Carolina Academy",
@@ -102,7 +107,7 @@ def index():
         title="Alana",
         url=url,
         mapbox_api_key=mapbox_api_key,
-        pages=pages
+        pages=pages,
     )
 
 
@@ -131,40 +136,37 @@ def hobbies():
         },
     ]
 
-    return render_template(
-        "hobbies.html",
-        hobbies=hobbies_list,
-        title="Alana",
-        url=url
-    )
+    return render_template("hobbies.html", hobbies=hobbies_list, title="Alana", url=url)
 
-@app.route('/api/timeline_post', methods=['POST'])
+
+@app.route("/api/timeline_post", methods=["POST"])
 def post_time_line_post():
-    name = request.form['name']
-    email = request.form['email']
-    content = request.form['content']
+    name = request.form["name"]
+    email = request.form["email"]
+    content = request.form["content"]
     timeline_post = TimelinePost.create(name=name, email=email, content=content)
-    
+
     return model_to_dict(timeline_post)
 
-@app.route('/api/timeline_post', methods=['GET'])
+
+@app.route("/api/timeline_post", methods=["GET"])
 def get_time_line_post():
     return {
-        'timeline_posts': [
+        "timeline_posts": [
             model_to_dict(p)
             for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())
         ]
     }
-    
-@app.route('/api/timeline_post/<int:id>', methods=['DELETE'])
+
+
+@app.route("/api/timeline_post/<int:id>", methods=["DELETE"])
 def delete_time_line_post(id):
     time_line_post = TimelinePost.get(TimelinePost.id == id)
     time_line_post.delete_instance()
-    return {
-        "message": "Timeline post has been successfully deleted"
-    }
-    
-@app.route('/timeline', methods=['GET'])
+    return {"message": "Timeline post has been successfully deleted"}
+
+
+@app.route("/timeline", methods=["GET"])
 def timeline():
     posts = TimelinePost.select().order_by(TimelinePost.created_at.desc())
-    return render_template('timeline.html', title="Timeline", posts=posts)
+    return render_template("timeline.html", title="Timeline", posts=posts)
