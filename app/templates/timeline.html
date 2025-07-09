@@ -6,7 +6,7 @@
 
     <h1>Timeline Posts</h1>
     <div class="form-wrapper">
-        <form action="{{url_for('post_time_line_post')}}" method="POST">
+        <form id="form" action="{{url_for('post_time_line_post')}}" method="POST">
 
 
             <div>
@@ -32,7 +32,7 @@
         </form>
     </div>
 
-    <div class="posts-wrapper">
+    <div id="posts-wrapper">
         {% for info in posts %}
         <div class="post-card-wrapper">
             <ul>
@@ -43,4 +43,37 @@
         </div>
         {% endfor %}
     </div>
+
+    <script>
+        const form = document.getElementById("form");
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const payload = new FormData(form)
+            fetch('{{url_for("post_time_line_post")}}', {
+                method: 'POST',
+                body: payload,
+            })
+                .then(res => res.json())
+                .then(data => {
+                    const postsWrapper = document.getElementById("posts-wrapper");
+                    const div = document.createElement("div");
+                    div.className = "post-card-wrapper";
+                    const ul = document.createElement("ul");
+                    const name = document.createElement("li");
+                    name.textContent = data.name;
+                    const email = document.createElement("li");
+                    email.textContent = data.email;
+                    const content = document.createElement("li");
+                    content.textContent = data.content;
+                    div.appendChild(ul);
+                    ul.appendChild(name);
+                    ul.appendChild(email);
+                    ul.appendChild(content);
+                    postsWrapper.insertBefore(div)
+                })
+            form.reset()
+        })
+    </script>
 </body>
