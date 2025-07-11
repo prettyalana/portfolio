@@ -231,3 +231,9 @@ a {
   box-shadow: 0 0 10px 5px white;
   color: rgb(238, 188, 76);
 }
+
+@media (max-width: 580px) {
+  .menu-container {
+    width: 100%;
+  }
+}
