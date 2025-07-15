@@ -7,7 +7,7 @@ from app import TimelinePost
 
 MODELS = [TimelinePost]
 
-test_db = SqliteDatabase(':memory')
+test_db = SqliteDatabase(':memory:')
 
 class TestTimelinePost(unittest.TestCase):
     def setUp(self):
@@ -26,4 +26,12 @@ class TestTimelinePost(unittest.TestCase):
         assert first_post.id == 1
         second_post = TimelinePost.create(name='Jane Doe', email='jane@example.com', content='Hellow world, I\'m Jane!')
         assert second_post.id == 2
+        
+        all_posts = TimelinePost.select().order_by(TimelinePost.created_at.desc())
+        
+        assert len(all_posts) == 2
+        for posts in all_posts:
+            assert len(posts.name) != 0
+            assert len(posts.email) != 0
+            assert len(posts.content) != 0
         
