@@ -44,4 +44,7 @@ class AppTestCase(unittest.TestCase):
         assert first_post["name"] == "John Doe"
         assert first_post["email"] == "johndoe@example.com"
         assert first_post["content"] == "Hi, I\'m John Doe!"
-        # TODO Add more tests relating to the timeline page
+        timeline_posts_html = response.get_data(as_text=True)
+        assert '<h1>Timeline Posts</h1>' in timeline_posts_html 
+        assert '<div class="form-wrapper">' in timeline_posts_html
+        assert '<div id="posts-wrapper">' in timeline_posts_html
