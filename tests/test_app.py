@@ -12,7 +12,6 @@ class AppTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         html = response.get_data(as_text=True)
         self.assertIn("<title>Alana</title>", html)
-        self.assertIn("<title>Alana</title>", html)
         self.assertIn("<h2>About me</h2>", html)
         self.assertIn("<h3>Fun Facts</h3>", html)
         self.assertIn("<h2>Previous Work Experience</h2>", html)
@@ -31,14 +30,14 @@ class AppTestCase(unittest.TestCase):
         post = self.client.post("/api/timeline_post", data={
             "name": "John Doe",
             "email": "john@example.com",
-            "content": "Hello world, I\'m John!"
+            "content": "Hello world, I'm John!"
         })
         self.assertEqual(post.status_code, 200)
         assert post.is_json
         post_data = post.get_json()
         self.assertEqual(post_data["name"], "John Doe")
         self.assertEqual(post_data["email"], "john@example.com")
-        self.assertEqual(post_data["content"], "Hello world, I\'m John!")
+        self.assertEqual(post_data["content"], "Hello world, I'm John!")
 
         html_response = self.client.get("/timeline")
         self.assertEqual(html_response.status_code, 200)
