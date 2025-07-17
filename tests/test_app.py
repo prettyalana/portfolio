@@ -12,6 +12,12 @@ class AppTestCase(unittest.TestCase):
         assert response.status_code == 200
         html = response.get_data(as_text=True)
         assert "<title>Alana</title>" in html
+        assert "<h2>About me</h2>" in html
+        assert "<h3>Fun Facts</h3>" in html
+        assert "<h2>Previous Work Experience</h2>" in html
+        assert "<h2>Education</h2>" in html
+        assert 'https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.css' in html
+        assert 'https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.js' in html
 
     def test_timeline(self):
         response = self.client.get("api/timeline_post")
