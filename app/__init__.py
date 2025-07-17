@@ -1,16 +1,16 @@
 import os
 import datetime
 import re
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 from dotenv import load_dotenv
 from peewee import *
 from playhouse.shortcuts import model_to_dict
 
-mapbox_api_key = os.getenv("MAPBOX_API_KEY")
-url = os.getenv("URL")
-
 load_dotenv()
 app = Flask(__name__)
+
+mapbox_api_key = os.getenv("MAPBOX_API_KEY")
+url = os.getenv("URL")
 
 mydb = MySQLDatabase(
     os.getenv("MYSQL_DATABASE"),
@@ -156,14 +156,14 @@ def post_time_line_post():
     if request.is_json:
         data = request.get_json()
     else:
-        data = request.form 
+        data = request.form
 
     name = data.get("name", "").strip()
     email = data.get("email", "").strip()
     content = data.get("content", "").strip()
-    
-    valid_email = re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', email)
-    
+
+    valid_email = re.match(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", email)
+
     if len(name) == 0:
         return "Invalid name", 400
     elif not valid_email:
@@ -173,7 +173,6 @@ def post_time_line_post():
     else:
         timeline_post = TimelinePost.create(name=name, email=email, content=content)
         return model_to_dict(timeline_post)
-        
 
 
 @app.route("/api/timeline_post", methods=["GET"])
@@ -198,10 +197,10 @@ def timeline():
     posts = TimelinePost.select().order_by(TimelinePost.created_at.desc())
     return render_template("timeline.html", title="Timeline", posts=posts)
 
+
 @app.route("/api/timeline_post/testing/reset", methods=["DELETE"])
 def reset_timeline_post():
     if os.getenv("TESTING") == "true":
-       reset_testing_posts = TimelinePost.delete().execute()
-       return f"{reset_testing_posts}", 200
+        reset_testing_posts = TimelinePost.delete().execute()
+        return f"{reset_testing_posts}", 200
     return "Not in testing mode", 403
-    
