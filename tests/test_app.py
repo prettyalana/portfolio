@@ -16,25 +16,25 @@ class AppTestCase(unittest.TestCase):
 
     def test_home(self):
         response = self.client.get("/")
-        assert response.status_code == 200
+        self.assertEqual(response.status_code, 200)
         html = response.get_data(as_text=True)
-        assert "<title>Alana</title>" in html
-        assert '<menu class="menu-container">' in html
-        assert '<header class="nav-bar">' in html
-        assert '<div class="profile">' in html
-        assert '<section id="about-me">' in html
-        assert '<section id="work-experience">' in html
-        assert '<section id="education">' in html
-        assert '<div id="map">' in html
+        self.assertIn("<title>Alana</title>", html)
+        self.assertIn('<menu class="menu-container">', html)
+        self.assertIn('<header class="nav-bar">', html)
+        self.assertIn('<div class="profile">', html)
+        self.assertIn('<section id="about-me">', html)
+        self.assertIn('<section id="work-experience">', html)
+        self.assertIn('<section id="education">', html)
+        self.assertIn('<div id="map">', html)
 
     def test_timeline(self):
 
         response = self.client.get("/api/timeline_post")
-        assert response.status_code == 200
-        assert response.is_json
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(response.is_json)
         json = response.get_json()
-        assert "timeline_posts" in json
-        assert len(json["timeline_posts"]) == 0
+        self.assertIn("timeline_posts", json)
+        self.assertEqual(len(json["timeline_posts"]), 0)
 
         post_data = {
             "name": "John Doe",
@@ -42,22 +42,22 @@ class AppTestCase(unittest.TestCase):
             "content": "Hi, I'm John Doe!",
         }
         post = self.client.post("/api/timeline_post", json=post_data)
-        assert post.status_code == 200
+        self.assertEqual(post.status_code, 200)
         new_post = self.client.get("/api/timeline_post")
         new_post_json = new_post.get_json()
-        assert len(new_post_json["timeline_posts"]) == 1
+        self.assertEqual(len(new_post_json["timeline_posts"]), 1)
         first_post = new_post_json["timeline_posts"][0]
-        assert first_post["name"] == "John Doe"
-        assert first_post["email"] == "johndoe@example.com"
-        assert first_post["content"] == "Hi, I'm John Doe!"
+        self.assertEqual(first_post["name"], "John Doe")
+        self.assertEqual(first_post["email"], "johndoe@example.com")
+        self.assertEqual(first_post["content"], "Hi, I'm John Doe!")
 
         # test html separately
         html_response = self.client.get("/timeline")
-        assert html_response.status_code == 200
+        self.assertEqual(html_response.status_code, 200)
         timeline_posts_html = html_response.get_data(as_text=True)
-        assert "<h1>Timeline Posts</h1>" in timeline_posts_html
-        assert '<div class="form-wrapper">' in timeline_posts_html
-        assert '<div id="posts-wrapper">' in timeline_posts_html
+        self.assertIn("<h1>Timeline Posts</h1>", timeline_posts_html)
+        self.assertIn('<div class="form-wrapper">', timeline_posts_html)
+        self.assertIn('<div id="posts-wrapper">', timeline_posts_html)
 
     def test_malformed_timeline_post(self):
         # POST request missing name
@@ -65,18 +65,18 @@ class AppTestCase(unittest.TestCase):
             "/api/timeline_post",
             data={"email": "john@example.com", "content": "Hello world, I'm John!"},
         )
-        assert response.status_code == 400
+        self.assertEqual(response.status_code, 400)
         html = response.get_data(as_text=True)
-        assert "Invalid name" in html
+        self.assertIn("Invalid name", html)
 
         # POST request with empty content
         response = self.client.post(
             "/api/timeline_post",
             data={"name": "John Doe", "email": "john@example.com", "content": ""},
         )
-        assert response.status_code == 400
+        self.assertEqual(response.status_code, 400)
         html = response.get_data(as_text=True)
-        assert "Invalid content" in html
+        self.assertIn("Invalid content", html)
 
         # POST request with malformed email
         response = self.client.post(
@@ -87,6 +87,6 @@ class AppTestCase(unittest.TestCase):
                 "content": "Hello world, I'm John!",
             },
         )
-        assert response.status_code == 400
+        self.assertEqual(response.status_code, 400)
         html = response.get_data(as_text=True)
-        assert "Invalid email" in html
+        self.assertIn("Invalid email", html)
