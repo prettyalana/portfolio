@@ -9,55 +9,56 @@ class AppTestCase(unittest.TestCase):
 
     def test_home(self):
         response = self.client.get("/")
-        assert response.status_code == 200
+        self.assertEqual(response.status_code, 200)
         html = response.get_data(as_text=True)
-        assert "<title>Alana</title>" in html
-        assert "<h2>About me</h2>" in html
-        assert "<h3>Fun Facts</h3>" in html
-        assert "<h2>Previous Work Experience</h2>" in html
-        assert "<h2>Education</h2>" in html
-        assert 'https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.css' in html
-        assert 'https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.js' in html
+        self.assertIn("<title>Alana</title>", html)
+        self.assertIn("<title>Alana</title>", html)
+        self.assertIn("<h2>About me</h2>", html)
+        self.assertIn("<h3>Fun Facts</h3>", html)
+        self.assertIn("<h2>Previous Work Experience</h2>", html)
+        self.assertIn("<h2>Education</h2>", html)
+        self.assertIn("https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.css", html)
+        self.assertIn("https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.js", html)
 
     def test_timeline(self):
         response = self.client.get("api/timeline_post")
-        assert response.status_code == 200
+        self.assertEqual(response.status_code, 200)
         assert response.is_json
         json = response.get_json()
-        assert "timeline_posts" in json
-        assert len(json["timeline_posts"]) == 0
+        self.assertIn("timeline_posts", json)
+        self.assertEqual(len(json["timeline_posts"]), 0)
 
         post = self.client.post("/api/timeline_post", data={
             "name": "John Doe",
             "email": "john@example.com",
             "content": "Hello world, I\'m John!"
         })
-        assert post.status_code == 200
+        self.assertEqual(post.status_code, 200)
         assert post.is_json
         post_data = post.get_json()
-        self.assertEqual(post_data["name"], "Jane Doe")
-        assert post_data["email"] == "john@example.com"
-        assert post_data["content"] == "Hello world, I\'m John!"
+        self.assertEqual(post_data["name"], "John Doe")
+        self.assertEqual(post_data["email"], "john@example.com")
+        self.assertEqual(post_data["content"], "Hello world, I\'m John!")
 
         html_response = self.client.get("/timeline")
-        assert html_response.status_code == 200
+        self.assertEqual(html_response.status_code, 200)
         timeline_html = html_response.get_data(as_text=True)
-        assert '<form id="form"' in timeline_html
-        assert '<h1>Timeline Posts</h1>' in timeline_html
-        assert '<div id="posts-wrapper">' in timeline_html
+        self.assertIn('<form id="form"', timeline_html)
+        self.assertIn('<h1>Timeline Posts</h1>', timeline_html)
+        self.assertIn('<div id="posts-wrapper">', timeline_html)
 
     def test_malformed_timeline_post(self):
         response = self.client.post("/api/timeline_post", data={"email": "john@example.com", "content": "Hello world, I'm John!"})
-        assert response.status_code == 400
+        self.assertEqual(response.status_code, 400)
         html = response.get_data(as_text=True)
-        assert "Invalid name" in html
+        self.assertIn("Invalid name", html)
 
         response = self.client.post("/api/timeline_post", data={"name": "John Doe", "email": "john@example.com"})
-        assert response.status_code == 400
+        self.assertEqual(response.status_code, 400)
         html = response.get_data(as_text=True)
-        assert "Invalid content" in html
+        self.assertIn("Invalid content", html)
 
         response = self.client.post("/api/timeline_post", data={"name": "John Doe", "content": "Hello world, I'm John!"})
-        assert response.status_code == 400
+        self.assertEqual(response.status_code, 400)
         html = response.get_data(as_text=True)
-        assert "Invalid email" in html
+        self.assertIn("Invalid email", html)
