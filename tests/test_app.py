@@ -35,7 +35,7 @@ class AppTestCase(unittest.TestCase):
         assert post.status_code == 200
         assert post.is_json
         post_data = post.get_json()
-        assert post_data["name"] == "John Doe"
+        self.assertEqual(post_data["name"], "Jane Doe")
         assert post_data["email"] == "john@example.com"
         assert post_data["content"] == "Hello world, I\'m John!"
 
@@ -45,3 +45,19 @@ class AppTestCase(unittest.TestCase):
         assert '<form id="form"' in timeline_html
         assert '<h1>Timeline Posts</h1>' in timeline_html
         assert '<div id="posts-wrapper">' in timeline_html
+
+    def test_malformed_timeline_post(self):
+        response = self.client.post("/api/timeline_post", data={"email": "john@example.com", "content": "Hello world, I'm John!"})
+        assert response.status_code == 400
+        html = response.get_data(as_text=True)
+        assert "Invalid name" in html
+
+        response = self.client.post("/api/timeline_post", data={"name": "John Doe", "email": "john@example.com"})
+        assert response.status_code == 400
+        html = response.get_data(as_text=True)
+        assert "Invalid content" in html
+
+        response = self.client.post("/api/timeline_post", data={"name": "John Doe", "content": "Hello world, I'm John!"})
+        assert response.status_code == 400
+        html = response.get_data(as_text=True)
+        assert "Invalid email" in html
