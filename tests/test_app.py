@@ -38,3 +38,10 @@ class AppTestCase(unittest.TestCase):
         assert post_data["name"] == "John Doe"
         assert post_data["email"] == "john@example.com"
         assert post_data["content"] == "Hello world, I\'m John!"
+
+        html_response = self.client.get("/timeline")
+        assert html_response.status_code == 200
+        timeline_html = html_response.get_data(as_text=True)
+        assert '<form id="form"' in timeline_html
+        assert '<h1>Timeline Posts</h1>' in timeline_html
+        assert '<div id="posts-wrapper">' in timeline_html
