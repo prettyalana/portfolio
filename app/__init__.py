@@ -8,6 +8,9 @@ from playhouse.shortcuts import model_to_dict
 load_dotenv()
 app = Flask(__name__)
 
+mapbox_api_key = os.getenv("MAPBOX_API_KEY")
+url = os.getenv("URL")
+
 if os.getenv("TESTING") == "true":
     print("Running in test mode")
     mydb = SqliteDatabase('file:memory?mode=memory&cache=shared', uri=True)
@@ -35,11 +38,6 @@ class TimelinePost(Model):
 
 mydb.connect()
 mydb.create_tables([TimelinePost])
-
-
-mapbox_api_key = os.getenv("MAPBOX_API_KEY")
-url = os.getenv("URL")
-
 
 @app.route("/")
 def index():
