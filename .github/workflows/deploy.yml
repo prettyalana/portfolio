@@ -27,4 +27,4 @@ jobs:
           SSH_PRIVATE_KEY: ${f secrets.SSH_PRIVATE_KEY }}
           SSH_IP: ${{ secrets.SSH_IP }}
       - name: Print project root directory
-        run: ssh my-vps 'cd ${f secrets. PROJECT_ROOT }} && pwd'
+        run: ssh my-vps 'cd ${{ secrets.PROJECT_ROOT }} && pwd'
