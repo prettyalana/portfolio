@@ -13,7 +13,7 @@ url = os.getenv("URL")
 
 if os.getenv("TESTING") == "true":
     print("Running in test mode")
-    mydb = SqliteDatabase('file:memory?mode=memory&cache=shared', uri=True)
+    mydb = SqliteDatabase("file:memory?mode=memory&cache=shared", uri=True)
 else:
     mydb = MySQLDatabase(
         os.getenv("MYSQL_DATABASE"),
@@ -38,6 +38,7 @@ class TimelinePost(Model):
 
 mydb.connect()
 mydb.create_tables([TimelinePost])
+
 
 @app.route("/")
 def index():
@@ -153,7 +154,7 @@ def post_time_line_post():
         return "Invalid email", 400
     if not content:
         return "Invalid content", 400
-        
+
     timeline_post = TimelinePost.create(name=name, email=email, content=content)
 
     return model_to_dict(timeline_post)
