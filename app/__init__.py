@@ -21,6 +21,7 @@ else:
         password=os.getenv("MYSQL_PASSWORD"),
         host=os.getenv("MYSQL_HOST"),
         port=3306,
+        charset='utf8mb4'
     )
 
 print(mydb)
