@@ -15,11 +15,12 @@ jobs:
       TESTING: true
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11.9'
+          cache: pip # Makes the workflow faster by caching the pip dependencies and skipping the 'Install Dependencies' step
 
       - name: Setup Python Virtual Environment
         run: python -m venv python3-virtualenv
