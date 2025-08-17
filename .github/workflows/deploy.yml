@@ -17,7 +17,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v5 # Update actions to v5 to use the cache parameter below
         with:
           python-version: '3.11.9'
           cache: pip # Makes the workflow faster by caching the pip dependencies and skipping the 'Install Dependencies' step
