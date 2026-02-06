@@ -75,6 +75,22 @@
     },
     {
       "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-122.419359, 37.779238] },
+      "properties": {
+        "name": "San Francisco",
+        "full_address": "San Francisco, California, United States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-117.161087, 32.715738] },
+      "properties": {
+        "name": "San Diego",
+        "full_address": "San Diego, California, United States"
+      }
+    },
+    {
+      "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [129.311914, 35.53917] },
       "properties": {
         "name": "Ulsan",
@@ -138,14 +154,6 @@
       "properties": {
         "name": "Seattle",
         "full_address": "Seattle, Washington, United States"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-122.419359, 37.779238] },
-      "properties": {
-        "name": "San Francisco",
-        "full_address": "San Francisco, California, United States"
       }
     },
     {
